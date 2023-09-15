@@ -1,27 +1,12 @@
 USE [PRR_DW]
 GO
 
-/****** Object:  StoredProcedure [etl].[proc_upd_table_yardi_tenant_transactional]    Script Date: 2023-09-15 10:23:02 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-
-
-/***********************************************************************************
-procedure:        etl.proc_upd_table_yardi_tenant_transactional
-Create Date:      2023-05-12
-Author:           sjafri
-Description:      This procedure updates data in table:dbo.yardi_tenanttransactional	
-Notes:            
-Usage:            etl.proc_upd_table_yardi_tenant_transactional
-*************************************************************************************
-SUMMARY OF CHANGES
--------------------------------------------------------------------------------------
-*************************************************************************************/ 
 
 CREATE     proc [etl].[proc_upd_table_yardi_tenant_transactional] as 
 set nocount on
@@ -577,8 +562,7 @@ WHILE @@FETCH_STATUS = 0
 				from evqbwypwe_live.dbo.pmz_ssrs_TableauSales_Accounting(' + cast(@bldgid as varchar(10)) + ')'''
 
 	SET @LinkedServer = '[Yardi_live]'
---	SET @LinkedServer = '[yardi-sql.primarisreit.com\PCF013DB41_52_V,1433]'
---    SET @LinkedServer = '[YARDI-SQL-UAT\F013DB91T_2K16]'
+
 	
 	SET @OPENQUERY = 'SELECT * FROM OPENQUERY('+ @LinkedServer + ',' + @sql + ')'
 
